@@ -30,7 +30,9 @@ jobs:
         run: |
           cd functions
           python -m venv venv
-          ./venv/bin/pip install -r requirements.txt
+          . ./venv/bin/activate
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.txt
 
       - name: Deploy Firebase Functions
         run: firebase deploy --only functions --token "${{ secrets.FIREBASE_TOKEN }}"
